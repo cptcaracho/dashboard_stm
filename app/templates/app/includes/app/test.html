@@ -1,0 +1,130 @@
+{% load static %}
+
+{% block extra_css %}
+    <link href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.min.css" rel="stylesheet"
+          type="text/css"/>
+    <style>
+        .dataTables_length select {
+            color: #b4b6b9;
+        }
+
+        .dataTables_length select option {
+            color: rgba(94, 92, 92, 0.99);
+        }
+
+        .text-danger {
+            color: red;
+        }
+
+        .text-success {
+            color: green;
+        }
+        tr.negative td:nth-child(2) {
+  background-color: red;
+}
+
+tr.positive td:nth-child(2) {
+  background-color: green;
+}
+    </style>
+{% endblock %}
+{% block modules %}
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Default Datatable</h4>
+                    <p class="card-title-desc">ajx test
+                    </p>
+
+                    <table class="datatable">
+                        <thead>
+                        <tr>
+                            <th data-field="name">Name</th>
+                            <th data-field="cost">Cost</th>
+                            <th data-field="revenue">Revenue</th>
+                            <th data-field="profit">Profit</th>
+                            <th data-field="roi">ROI</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for x in data %}
+                            <tr>
+                                <td> {{ x.name }}</td>
+                                <td> {{ x.cost }}</td>
+                                <td> {{ x.revenue }} </td>
+                                <td> {{ x.profit }} </td>
+                                <td> {{ x.roi }} </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div><!--end card-->
+        </div>
+    </div>
+    <!-- end row -->
+{% endblock modules %}
+
+{% block extra_js %}
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
+    <script>
+        $('.datatable').DataTable({
+            "info": true,
+            paging: true,
+            ordering: true,
+            searching: true,
+            lengthChange: true,
+            responsive: true,
+            columnDefs: [
+                {
+                    targets: [0, 2],
+                    searchable: false,
+                }
+            ],
+            language: {
+                searchPlaceholder: 'Search...'
+            },
+            rowCallback: function (row, data, index) {
+                if (data[4] === 'Inactive') {
+                    $(row).addClass('table-danger');
+                }
+            },
+            columns: [
+                {
+                    data: 'name',
+                    title: 'Name',
+                },
+                                {
+                    data: 'cost',
+                    title: 'Cost',
+                },
+                                {
+                    data: 'revenue',
+                    title: 'Revenue',
+                },
+                                {
+                    data: 'profit',
+                    title: 'Profit',
+                },
+                                {
+                    data: 'roi',
+                    title: 'ROI',
+                    render: function (data, type, row, meta) {
+                        var cls = '';
+                        if (data < 0) {
+                            cls = 'text-danger';
+                        } else if (data > 0) {
+                            cls = 'text-success';
+                        }
+                        return '<span class="' + cls + '">' + data + '</span>';
+                    }
+                }
+            ],
+
+        });
+    </script>
+{% endblock extra_js %}

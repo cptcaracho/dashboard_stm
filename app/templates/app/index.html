@@ -1,0 +1,34 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block contents %}
+    {% include 'stats/includes/index/charts.html' %}
+
+    {% block extra_css %}
+        <link href="{% static 'libs/tui-chart/dist/tui-chart.min.css' %}" rel="stylesheet"
+              type="text/css"/>
+
+    {% endblock extra_css %}
+
+    {% block extra_content %}
+        {{ profit|json_script:"profit" }}
+        {{ revenue|json_script:"revenue" }}
+        {{ cost|json_script:"cost" }}
+        {{ date|json_script:"date" }}
+    {% endblock extra_content %}
+{% endblock %}
+
+
+{% block extra_javascript %}
+    <!-- apexcharts -->
+
+    <script src="{% static 'libs/apexcharts/dist/apexcharts.min.js' %}"></script>
+    <script src="{% static 'libs/echarts/dist/echarts.min.js' %}"></script>
+
+
+    <script src="{% static 'init/stats_mixed_charts.js' %}"></script>
+    <script src="{% static 'init/stats_column_charts.js' %}"></script>
+    <script src="{% static 'init/stats_column2_charts.js' %}"></script>
+
+
+
+{% endblock %}

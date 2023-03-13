@@ -1,0 +1,68 @@
+{% load static %}
+
+{% block extra_css %}
+
+{% endblock %}
+{% block contents %}
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Default Datatable</h4>
+                    <p class="card-title-desc">DataTables has most features enabled by
+                        default, so all you need to do to use it with your own tables is to call
+                        the construction function: <code>$().DataTable();</code>.
+                    </p>
+
+                    <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
+                    </table>
+                </div>
+            </div><!--end card-->
+        </div>
+
+        <div class="col-xl-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Default Datatable</h4>
+                    <p class="card-title-desc">ajx test
+                    </p>
+
+                    <table
+                            id="table"
+                            data-toggle="table"
+                            data-pagination="true"
+                            data-search="true">
+
+                        <thead>
+                        <tr>
+                            <th data-field="id">ID</th>
+                            <th data-field="name">Name</th>
+                            <th data-field="clicks">Clicks</th>
+                            <th data-field="profit">Profit</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for x in data %}
+                            <tr>
+                                <td> {{ x.id }}</td>
+                                <td> {{ x.name }}</td>
+                                <td> {{ x.clicks }} </td>
+                                <td> {{ x.profit }} </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div><!--end card-->
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
+
+{% block extra_javascript %}
+
+{% endblock %}

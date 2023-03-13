@@ -1,0 +1,131 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block contents %}
+    {% include 'stats/includes/data/datatables.html' %}
+
+    {% block extra_css %}
+        <!-- DataTables -->
+        <link href="{% static 'libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css' %}"
+              rel="stylesheet"
+              type="text/css"/>
+        <link href="{% static 'libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css' %}"
+              rel="stylesheet"
+              type="text/css"/>
+        <!-- Responsive datatable examples -->
+        <link href="{% static 'libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css' %}"
+              rel="stylesheet" type="text/css"/>
+
+        <!-- Bootstrap Tables -->
+        <link href="{% static 'libs/bootstrap-table-master/bootstrap-table.min.css' %}"
+              rel="stylesheet"
+
+              type="text/css"/>
+
+    {% endblock extra_css %}
+
+    {% block extra_content %}
+
+
+    {% endblock extra_content %}
+{% endblock %}
+
+
+{% block extra_javascript %}
+
+    <script src="{% static 'libs/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+
+    <script src="{% static 'libs/bootstrap-table-master/bootstrap-table.min.js' %}"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.21.2/dist/extensions/auto-refresh/bootstrap-table-auto-refresh.min.js"></script>
+    <script src="{% static 'libs/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+
+
+
+    <!-- Datatable init js -->
+    <script>
+        $(document).ready(function () {
+            $('#datatable').DataTable({
+                    ajax: {
+                        url: '/api/1',
+                        dataSrc: ''
+                    },
+                    columns: [
+                        {
+                            title: 'Binom ID',
+                            data: 'id'
+                        },
+                        {
+                            title: 'Name',
+                            data: 'name'
+                        },
+                        {
+                            title: 'Clicks',
+                            data: 'clicks'
+                        },
+                        {
+                            title: 'Profit',
+                            data: 'profit'
+                        },
+                    ],
+                    paging: true,
+                    searching: true,
+                    autoWidth: true,
+                    ordering: false,
+                    columnDefs: [
+                        {"width": "50px", "targets": 0},
+                        {"width": "250px", "targets": 1},
+                    ],
+                    order: [[3, 'des']],
+                    pageLength: 10,
+                }
+            );
+        });
+    </script>
+
+    <script>
+        var test_json = $.ajax({
+            url: "/api/", dataType: "json", success: function (data) {
+                $("#div1223").load('/api/');
+                console.log(JSON.stringify(data[0]));
+                // alert('type of array = ' + typeof(data)); //--> object
+
+                // alert('stringify = ' + JSON.stringify(data)); //--> object
+
+            }
+        });
+    </script>
+
+
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: "/api/", dataType: "json", success: function (data) {
+                    console.log(data[0].date_name);
+                }
+            });
+        });
+
+
+        $(document).ready(function () {
+            $.get("/api/", function (data, status) {
+                //alert("Data: " + data[0] + "\nStatus: " + status);
+            });
+        });
+
+
+        var data = [
+            {"Id": 10004, "PageName": "club"},
+            {"Id": 10040, "PageName": "qaz"},
+            {"Id": 10059, "PageName": "jjjjjjj"}
+        ];
+
+        $.each(data, function (i, item) {
+            //alert(data[i].PageName);
+        });
+
+        $.each(data, function (i, item) {
+            //alert(item.PageName);
+        });
+
+    </script>
+{% endblock %}
