@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="0a4a285a-d79a-4b78-ab15-80f716f8a0b3" name="digital ocean dashboard_stm" url="http://159.65.124.117">
+        <fileTransfer accessType="SFTP" host="159.65.124.117" port="22" sshConfigId="b79f4bfd-6315-4eb3-8062-aa739f722db2" sshConfig="root@159.65.124.117:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
