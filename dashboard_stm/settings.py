@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-!nd5%3yz221t!!2!5+jtnvq9$$^voj(cu^p7&s^y7rv8azi+#_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '142.93.108.19']
+ALLOWED_HOSTS = ['127.0.0.1', '206.81.17.66', 'django-dashboard-stm.dashboardstm.xyz']
 
 # Application definition
 
