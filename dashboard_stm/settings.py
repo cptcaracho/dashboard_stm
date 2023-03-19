@@ -127,6 +127,6 @@ STATICFILES_DIRS = (
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CSRF_TRUSTED_ORIGINS = ["http://django-dashboard-stm.dashboardstm.xyz", "http://www.django-dashboard-stm.dashboardstm.xyz"]
+CSRF_TRUSTED_ORIGINS = ["http://django-dashboard-stm.dashboardstm.xyz", "http://www.django-dashboard-stm.dashboardstm.xyz","https://django-dashboard-stm.dashboardstm.xyz", "https://www.django-dashboard-stm.dashboardstm.xyz"]
 
 CSRF_COOKIE_DOMAIN = ".dashboardstm.xyz"
